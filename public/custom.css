@@ -1,0 +1,86 @@
+body {
+	background-color: #121212;
+	font-family: "Roboto Mono", monospace;
+	font-size: 12px;
+	font-weight: 300;
+	color: #fff;
+	letter-spacing: .4px;
+}
+.card {
+	color: #121212;
+}
+.text-just {
+	color: #ff0052;
+	font-family: "IBM Plex Sans", sans-serif;
+}
+.btn-just {
+	background-color: #ff0052;
+	color: white;
+}
+.cps-pointer {
+    cursor: pointer;
+    animation: curvy-bounce 2s infinite;
+  }
+.cps-pointer:hover {
+	opacity: 1!important;
+}
+.cps-pointer:active {
+	-webkit-filter:drop-shadow(0px 0px 6px rgba(255,0,140,0.75));
+	filter:drop-shadow(0px 0px 6px rgba(255,0,140,0.75));
+	/* -webkit-box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75);
+	-moz-box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75);
+	box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75); */
+}
+
+/* transition animation */
+.fade-enter {
+	opacity: 0;
+}
+.fade-enter-active {
+	transition: opacity 0.5s;
+	animation: slide-in 0.5s ease-out forwards;
+}
+.fade-leave-active {
+	transition: opacity 0.5s;
+	opacity: 0;
+}
+.indicator {
+	width: 1rem;
+	height: 1rem;
+	background-color: #ff0052;
+	border-radius: 50%;
+}
+@keyframes slide-in {
+	from {
+	    transform: translateY(40px);
+	}
+	to {
+	    transform: translateY(0);
+	}
+}
+@keyframes indicator {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes curvy-bounce {
+	0% {
+		transform: translateY(0);
+	}
+	35% {
+		opacity: 1;
+	}
+	50% {
+		transform: translateY(20px);
+		opacity: 0.85;
+	}
+	65% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
