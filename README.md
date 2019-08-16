@@ -1,29 +1,12 @@
-# curvy-idle
+# curvy-idle-game
+A short idle game to pass some time while waiting for soon(c) to end and Team JUST to drop JUST.Game
 
-## Project setup
+Game utilizes probably shoddy written VueJS code but idgaf as long as it works lmao.
+
+Enjoy.
+
+## Setup
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
