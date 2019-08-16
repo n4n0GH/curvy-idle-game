@@ -28,7 +28,7 @@ export default new Vuex.Store({
 		},
 		boxModule: {
 			'active': false,
-			'price': 1, // 150 for main release
+			'price': 150, // 150 for main release
 			'balance': 0 // 2 clicks => 1 box
 		},
 		hackModule: { // @dev: prices are in boxes! chat has to be purchased before!
@@ -44,7 +44,7 @@ export default new Vuex.Store({
 					'level': 1 // how fast commands are executed (higher level shortens delay in action)
 				},
 				firewall: { // @dev: prices are in clicks!
-					'price': 2, // 250 for main release
+					'price': 250, // 250 for main release
 					'level': 0,
 					'energy': 0 // populated automatically, +25 max energy for each level
 				}
@@ -271,6 +271,15 @@ export default new Vuex.Store({
 			state.hackModule.upgrades.firewall.price += Math.floor(state.hackModule.upgrades.firewall.price * 0.1)
 			state.hackModule.upgrades.firewall.energy += 25
 		},
+		hackFwallIntegrity: (state, payload) => {
+			let result = state.hackModule.upgrades.firewall.energy += payload
+			if(result <= 0){
+				state.hackModule.upgrades.firewall.energy = 0
+			}
+			else {
+				result
+			}
+		},
 		commandExec: (state, payload) => {
 			state.hackModule.game.threads ++
 			if(state.hackModule.game.threads > state.hackModule.upgrades.ram.level){
@@ -372,6 +381,9 @@ export default new Vuex.Store({
 		},
 		setHackFwallUpgrade: context => {
 			context.commit('hackFwallUpgrade')
+		},
+		setHackFwallIntegrity: (context, payload) => {
+			context.commit('hackFwallIntegrity', payload)
 		},
 		setCommand: (context, payload) => {
 			context.commit('commandExec', payload)

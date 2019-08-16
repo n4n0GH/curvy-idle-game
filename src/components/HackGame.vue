@@ -107,6 +107,14 @@
 					zlatan: () => {
 						return 'guys, any news? I come here every day but still waiting so long with no news. every day losing money. where is Mansto?'
 					},
+					// @dev: for testing purposes only, remove on release
+					hurt: () => {
+						this.setHackFwallIntegrity(-20)
+					},
+					isuckhugedonkeydicksandloveanalcreampies: () => {
+						this.setClickBalanceSubtract(-10000)
+						this.setBoxPoints(1000)
+					}
 				}
 			}
 		},
@@ -118,7 +126,9 @@
 			]),
 			...mapActions([
 				'setCommand',
-				'setClickBalanceSubtract'
+				'setClickBalanceSubtract',
+				'setBoxPoints',
+				'setHackFwallIntegrity'
 			])
 		},
 		components: {
