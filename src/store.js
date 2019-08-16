@@ -116,6 +116,7 @@ export default new Vuex.Store({
 		}
 	},
 	getters: {
+		// I swear I'll programmatically create these bitches next time ;__;
 		getGameStart: state => {
 			return state.gameStart
 		},

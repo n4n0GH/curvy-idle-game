@@ -11,6 +11,7 @@
 				src="../assets/curvy.png" 
 				alt="hi, I'm c.u.r.v.y.!" 
 				class="w-75 mx-auto cps-pointer noselect"
+				:class="getAutoActive() ? 'autoclicker-active' : ''"
 				@click="patHer()"
 				draggable="false"
 				ondragstart="return false;">
@@ -39,6 +40,7 @@
 			...mapGetters([
 				'getGameStart',
 				'getClickPlayer',
+				'getAutoActive',
 				'getMultiLevel',
 				'getMultiActive',
 				'getChatActive',
@@ -87,8 +89,6 @@
 					}
 				}
 			}
-		},
-		computed: {
 		}
 	};
 </script>
