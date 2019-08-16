@@ -12,7 +12,7 @@
 					<div class="card-header">
 						C.U.R.V.Y. VM Settings
 					</div>
-					<div class="card-body">
+					<div class="card-body pb-0">
 						<div class="row">
 							<div class="col-4">
 								<p class="lead w-100">CPU: <span class="text-just">{{getHackCpu()}}GHz</span></p>
@@ -40,13 +40,20 @@
 						<div class="row">
 							<div class="col">
 								<hr>
-								<p class="lead">Firewall: <span class="text-just">{{getHackFwall() > 0 ? 'Enabled' : 'Disabled'}}</span></p>
+								<p class="lead">Firewall: 
+									<span class="text-just">
+										{{getHackFwall() > 0 ? 'Enabled - ' : 'Disabled'}}
+									</span>
+									<span class="text-just" v-if="getHackFwall() > 0">
+										{{getHackFwall() &lt; 4 ? 'Level ' + getHackFwall() : 'Maximum Security'}}
+									</span>
+								</p>
 							</div>
 						</div>
 						<div class="row" v-if="getHackFwall() == 0">
 							<div class="col">
 								<button 
-								class="btn btn-just btn-block"
+								class="btn btn-just btn-block mb-4"
 								@click="upgradeFwall()"
 								>
 									Enable ({{getHackFwallPrice()}} PP)
@@ -54,12 +61,9 @@
 							</div>
 						</div>
 						<div class="row" v-if="getHackFwall() > 0">
-							<div class="col-4">
-								<p>Integrity: <span class="text-just">{{getHackFwallIntegrity()}}%</span></p>
-							</div>
-							<div class="col-8">
+							<div class="col">
 								<button 
-								class="btn btn-just btn-block"
+								class="btn btn-just btn-block mb-4"
 								@click="upgradeFwall()"
 								v-if="getHackFwall() < 4">
 									Upgrade ({{getHackFwallPrice()}} PP)

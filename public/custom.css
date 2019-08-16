@@ -20,18 +20,25 @@ body {
 .cps-pointer {
     cursor: pointer;
     animation: curvy-bounce 2s infinite;
-  }
+}
 .cps-pointer:hover {
 	opacity: 1!important;
 }
 .cps-pointer:active {
 	-webkit-filter:drop-shadow(0px 0px 6px rgba(255,0,140,0.75));
 	filter:drop-shadow(0px 0px 6px rgba(255,0,140,0.75));
+	animation: click-bounce .1s;
 	/* -webkit-box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75);
 	-moz-box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75);
 	box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75); */
 }
-
+.noselect {
+	user-select: none;
+	-webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+}
 /* transition animation */
 .fade-enter {
 	opacity: 0;
@@ -44,11 +51,29 @@ body {
 	transition: opacity 0.5s;
 	opacity: 0;
 }
+.fade-out-enter {
+	opacity: 1;
+}
+.fade-out-enter-active {
+	transition: opacity 0.5s;
+}
+.fade-out-leave-active {
+	opacity: 0;
+	transform: translateY(-300px);
+	transition: all 0.7s;
+}
 .indicator {
 	width: 1rem;
 	height: 1rem;
 	background-color: #ff0052;
 	border-radius: 50%;
+}
+.add-indicator {
+	position: absolute;
+	font-size: 3rem;
+	font-weight: bold;
+	color: #ff0052;
+	pointer-events: none;
 }
 @keyframes slide-in {
 	from {
@@ -58,12 +83,15 @@ body {
 	    transform: translateY(0);
 	}
 }
-@keyframes indicator {
+@keyframes click-bounce {
 	0% {
-		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(0.97);
 	}
 	100% {
-		opacity: 0;
+		transform: scale(1);
 	}
 }
 @keyframes curvy-bounce {
@@ -82,5 +110,15 @@ body {
 	}
 	100% {
 		transform: translateY(0);
+	}
+}
+@keyframes curvy-add {
+	0%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100%{
+		opacity: 0;
+		transform: translateY(-300px);
 	}
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" style="overflow:hidden">
     <div class="row vh-100 p-4 ">
       <div class="col-9 ">
           <div class="row h-75 ">

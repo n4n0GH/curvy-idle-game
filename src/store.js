@@ -14,7 +14,7 @@ export default new Vuex.Store({
 		clickMulti: {
 			'active': false,
 			'price': 1, //20 for main release
-			'level': 2
+			'level': 1
 		},
 		autoClickModule: {
 			'active': false,
@@ -28,12 +28,12 @@ export default new Vuex.Store({
 		},
 		boxModule: {
 			'active': false,
-			'price': 150, // 150 for main release
+			'price': 1, // 150 for main release
 			'balance': 0 // 2 clicks => 1 box
 		},
 		hackModule: { // @dev: prices are in boxes! chat has to be purchased before!
 			'active': false,
-			'price': 100, // 100 for main release
+			'price': 1, // 100 for main release
 			upgrades: {
 				ram: { // how many commands can be queued up
 					'price': 150, // 150 for main
@@ -44,8 +44,9 @@ export default new Vuex.Store({
 					'level': 1 // how fast commands are executed (higher level shortens delay in action)
 				},
 				firewall: { // @dev: prices are in clicks!
-					'price': 250, // 250 for main release
-					'level': 0
+					'price': 2, // 250 for main release
+					'level': 0,
+					'energy': 0 // populated automatically, +25 max energy for each level
 				}
 			},
 			game: {
@@ -188,7 +189,7 @@ export default new Vuex.Store({
 			return state.hackModule.upgrades.firewall.level
 		},
 		getHackFwallIntegrity: state => {
-			return state.hackModule.upgrades.firewall.level*25
+			return state.hackModule.upgrades.firewall.energy
 		},
 		getHackFwallPrice: state => {
 			return state.hackModule.upgrades.firewall.price
@@ -215,6 +216,7 @@ export default new Vuex.Store({
 		},
 		multiActive: state => {
 			state.clickMulti.active = true
+			state.clickMulti.level++
 			if(state.chatModule.active){
 				state.chatModule.messages.push('activating the multiplier is a good way to reduce the chance of getting tendonitis (o◡o )')
 			}
@@ -266,6 +268,7 @@ export default new Vuex.Store({
 		hackFwallUpgrade: state => {
 			state.hackModule.upgrades.firewall.level ++
 			state.hackModule.upgrades.firewall.price += Math.floor(state.hackModule.upgrades.firewall.price * 0.1)
+			state.hackModule.upgrades.firewall.energy += 25
 		},
 		commandExec: (state, payload) => {
 			state.hackModule.game.threads ++
