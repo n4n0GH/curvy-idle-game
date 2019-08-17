@@ -211,11 +211,8 @@ export default new Vuex.Store({
 		clickTotal: (state, payload) => {
 			state.clickCounter.total += payload
 		},
-		clickBalanceAdd: (state, payload) => {
+		clickBalanceAdjust: (state, payload) => {
 			state.clickCounter.balance += payload
-		},
-		clickBalanceSubtract: (state, payload) => {
-			state.clickCounter.balance -= payload
 		},
 		multiActive: state => {
 			state.clickMulti.active = true
@@ -330,12 +327,12 @@ export default new Vuex.Store({
 			context.commit('gameStart')
 		},
 		setClickBalanceSubtract: (context, payload) => {
-			context.commit('clickBalanceSubtract', payload)
+			context.commit('clickBalanceAdjust', payload*-1)
 		},
 		setHumanClick: (context, payload) => {
 			context.commit('clickPlayer')
 			context.commit('clickTotal', payload)
-			context.commit('clickBalanceAdd', payload)
+			context.commit('clickBalanceAdjust', payload)
 		},
 		setMultiActive: context => {
 			context.commit('multiActive')
@@ -347,7 +344,7 @@ export default new Vuex.Store({
 		},
 		setAutoClick: (context, payload) => {
 			context.commit('clickTotal', 1)
-			context.commit('clickBalanceAdd', payload)
+			context.commit('clickBalanceAdjust', payload)
 		},
 		setAutoActive: context => {
 			context.commit('autoActive')
