@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" style="overflow:hidden">
-    <button @click="cheat()">Cheat</button>
-    <button @click="hurt()">Force Game Over</button>
+    <!-- <button @click="cheat()">Cheat</button>
+    <button @click="hurt()">Force Game Over</button> -->
     <div class="row vh-100 p-4 ">
       <div class="col-9 pr-0">
           <div class="row h-75 ">
