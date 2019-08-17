@@ -1,6 +1,6 @@
 <template>
-	<div class="row">
-		<div class="card w-100">
+	<div class="row w-100">
+		<div class="card w-100 noselect">
 			<div class="card-header">
 				Simulation Report Module
 			</div>
@@ -130,6 +130,9 @@
 					this.setAutoClick(this.getAutoLevel()/100);
 				}, 1000/this.getAutoLevel());
 				autoSim;
+			}),
+			EventBus.$on('playerDefeated', () => {
+				clearInterval(autoSim)
 			})
 		}
 	};

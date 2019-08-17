@@ -35,6 +35,9 @@ body {
 .autoclicker-active {
 	animation: autoglow 1s ease-in-out infinite, curvy-bounce 2s infinite;
 }
+.attention-anim {
+	animation: pulse 1s ease-in-out infinite;
+}
 .noselect {
 	user-select: none;
 	-webkit-user-select: none;
@@ -77,6 +80,17 @@ body {
 	font-weight: bold;
 	color: #ff0052;
 	pointer-events: none;
+}
+@keyframes pulse {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 @keyframes autoglow {
 	0% {

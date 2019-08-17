@@ -1,6 +1,6 @@
 <template>
 	<div class="row">
-		<div class="col p-0">
+		<div class="col p-0 noselect">
 			<div class="card h-100 w-100" v-if="getHackActive()">
 				<div class="card-header">
 					C.U.R.V.Y. VM Settings
@@ -78,6 +78,8 @@
 	import {mapGetters} from 'vuex'
 	import {mapActions} from 'vuex'
 
+	import EventBus from '../eventBus.js'
+
 	export default {
 		methods: {
 			...mapGetters([
@@ -106,7 +108,8 @@
 				'setHackActive',
 				'setHackCpuUpgrade',
 				'setHackRamUpgrade',
-				'setHackFwallUpgrade'
+				'setHackFwallUpgrade',
+				'setHackerStatus'
 			]),
 			
 			upgradeRam(){
@@ -123,6 +126,9 @@
 			},
 			upgradeFwall(){
 				if(this.getClickBalance() >= this.getHackFwallPrice()){
+					if(this.getHackFwall() == 0){
+						EventBus.$emit('backDoor')
+					}
 					if(this.getHackFwall() < 4) {
 						this.setClickBalanceSubtract(this.getHackFwallPrice())
 						this.setHackFwallUpgrade()

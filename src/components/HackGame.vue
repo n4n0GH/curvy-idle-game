@@ -1,11 +1,11 @@
 <template>
 	<div class="row h-100">
 		<div class="col p-0" v-if="getHackActive()">
-			<div class="card w-100 h-100">
+			<div class="card bg-dark text-light w-100 h-100">
 				<div class="card-header">
 					C.U.R.V.Y. VM Terminal
 				</div>
-				<div class="card-body p-2" style="position: relative;">
+				<div class="card-body p-0" style="position: relative; overflow:hidden">
 					<div class="row w-100 h-100 ml-0">
 						<div class="col p-0 w-100 h-100">
 							<vue-command
@@ -23,6 +23,8 @@
 <script>
 	import {mapGetters} from 'vuex'
 	import {mapActions} from 'vuex'
+	// eslint-disable-next-line
+	import EventBus from '../eventBus.js'
 
 	import VueCommand from 'vue-command'
 	import 'vue-command/dist/vue-command.css'
@@ -31,8 +33,8 @@
 		data(){
 			return {
 				list: this.getHackCommands(),	// commands to use in the terminal
-				prompt: 'user@cvm: ~$',				// PS1 of terminal
-				bar: true,										// hide default titlebar of terminal
+				prompt: 'user@cvm: ~$',			// PS1 of terminal
+				bar: true,						// hide default titlebar of terminal
 				commands: {
 					help: () => {
 						let compiledList = ''
@@ -111,21 +113,13 @@
 							return '[Error] insufficient funds'
 						}
 					},
-					zlatan: () => {
-						return 'guys, any news? I come here every day but still waiting so long with no news. every day losing money. where is Mansto?'
-					},
-					// @dev: for testing purposes only, remove on release
-					hurt: () => {
-						this.setHackFwallIntegrity(-20)
-					},
-					isuckhugedonkeydicksandloveanalcreampies: () => {
-						this.setClickBalanceSubtract(-10000)
-						this.setBoxPoints(1000)
-					},
-					reset: () => {
+					reboot: () => {
 						localStorage.clear()
 						location.reload()
-						return 'goodbye...'
+						return 'Sending SIGKILL to all processes...'
+					},
+					zlatan: () => {
+						return 'guys, any news? I come here every day but still waiting so long with no news. every day losing money. where is Mansto?'
 					}
 				}
 			}
@@ -134,13 +128,15 @@
 			...mapGetters([
 				'getClickBalance',
 				'getHackActive',
-				'getHackCommands'
+				'getHackCommands',
+				'getHackerEnergy'
 			]),
 			...mapActions([
 				'setCommand',
 				'setClickBalanceSubtract',
 				'setBoxPoints',
-				'setHackFwallIntegrity'
+				'setHackFwallIntegrity',
+				'setHackerStatus'
 			])
 		},
 		components: {
@@ -157,6 +153,8 @@
 			height: 100%;
 			width: 100%;
 			position: absolute;
+			border-bottom-right-radius: .25rem!important;
+			border-bottom-left-radius: .25rem!important;
 		}
 
 		.term-std {

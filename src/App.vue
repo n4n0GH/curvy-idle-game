@@ -1,7 +1,9 @@
 <template>
   <div class="container-fluid" style="overflow:hidden">
+    <button @click="cheat()">Cheat</button>
+    <button @click="hurt()">Force Game Over</button>
     <div class="row vh-100 p-4 ">
-      <div class="col-9 ">
+      <div class="col-9 pr-0">
           <div class="row h-75 ">
             <div class="col ">
               <div class="row h-50 ">
@@ -39,18 +41,23 @@
                 </div>
               </div>
             </div>
-            <div class="col ">
+            <div class="col pb-4">
               <transition name="fade" appear>
                 <curvy></curvy>
               </transition>
             </div>
-            <div class="col ">
-              <transition name="fade" mode="out-in">
-                <click-stats v-if="getGameStart()"></click-stats>
-              </transition>
+            <div class="col">
+              <div class="row w-100 ml-1">
+                <transition name="fade" mode="out-in">
+                  <click-stats v-if="getGameStart()"></click-stats>
+                </transition>
+              </div>
+              <div class="row w-100 ml-1">
+                <hacker/>                
+              </div>
             </div>
           </div>
-          <div class="row h-25 ">
+          <div class="row h-25 mr-2">
             <div class="col ">
               <transition name="fade">
                 <hack-game v-if="getHackActive()"></hack-game>
@@ -88,6 +95,7 @@ import Chat from './components/Chat.vue'
 import BoxModule from './components/BoxModule.vue'
 import HackUpgrade from './components/HackUpgrade.vue'
 import HackGame from './components/HackGame.vue'
+import Agent232 from './components/Agent232.vue'
 
 export default {
   methods: {
@@ -101,7 +109,8 @@ export default {
       'getBoxPrice',
       'getHackActive',
       'getHackPrice',
-      'getAutoActive' 
+      'getAutoActive',
+      'getHackFwallIntegrity'
     ]),
     ...mapActions([
       'setClickBalanceSubtract',
@@ -110,7 +119,9 @@ export default {
       'setChatActive',
       'setChatMessage',
       'setHackActive',
-      'setAutoActive'
+      'setAutoActive',
+      'setBoxPoints',
+      'setHackFwallIntegrity'
     ]),
     activateBox(){
       if(this.getClickBalance() >= this.getBoxPrice()){
@@ -143,6 +154,13 @@ export default {
         }
       }
     },
+    cheat(){
+      this.setClickBalanceSubtract(-100000)
+      this.setBoxPoints(100000)
+    },
+    hurt(){
+      this.setHackFwallIntegrity((this.getHackFwallIntegrity()+1)*-1)
+    }
   },
   components: {
     Curvy,
@@ -150,7 +168,8 @@ export default {
     Chat,
     'box-module': BoxModule,
     'hack-upgrade': HackUpgrade,
-    'hack-game': HackGame
+    'hack-game': HackGame,
+    'hacker': Agent232
   }
 };
 </script>

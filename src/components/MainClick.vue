@@ -1,12 +1,12 @@
 <template>
 	<div class="row align-items-center h-100">
 		<!-- @dev: add "+1" effect on click -->
-		<div class="row">
-			<div class="col text-center" style="position: relative;">
-			<transition-group name="fade-out">
-				<div v-for="(floatie, index) in floaties" :key="index+1" style="position:relative; z-index:199;" v-html="floatie">
-				</div>
-			</transition-group>
+		<div class="row h-100 w-100">
+			<div class="col pl-4 pr-4 w-100" style="position: relative;">
+				<transition-group name="fade-out">
+					<div v-for="(floatie, index) in floaties" :key="index+1" style="position:relative; z-index:199;" v-html="floatie">
+					</div>
+				</transition-group>
 				<img 
 				src="../assets/curvy.png" 
 				alt="hi, I'm c.u.r.v.y.!" 
@@ -14,10 +14,24 @@
 				:class="getAutoActive() ? 'autoclicker-active' : ''"
 				@click="patHer()"
 				draggable="false"
-				ondragstart="return false;">
+				ondragstart="return false;"
+				style="position: absolute; z-index:180; top:150px; left:17%">
 				<transition name="fade">
-					<div class="progress mx-4" v-if="getHackFwall() > 0">
-						<div class="progress-bar" :style="{width: getHackFwallIntegrity() + '%'}" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div 
+						class="card bg-dark text-light h-100"
+						style="position: absolute; top:0; width:97%"
+						v-if="getHackFwall() > 0">
+						<div class="card-header">
+							pfctl -e
+						</div>
+						<div class="card-body">
+							
+						</div>
+						<div class="card-footer p-0" style="overflow:hidden">
+							<div class="progress rounded-0" style="height:2.5rem" v-if="getHackFwall() > 0">
+								<div class="progress-bar" :style="{width: fWallBar() + '%'}" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+						</div>
 					</div>
 				</transition>
 			</div>
@@ -28,6 +42,8 @@
 <script>
 	import {mapGetters} from 'vuex'
 	import {mapActions} from 'vuex'
+
+	import EventBus from '../eventBus.js'
 
 	export default {
 		data(){
@@ -52,6 +68,9 @@
 				'setHumanClick',
 				'setChatMessage',
 			]),
+			fWallBar(){
+				return 100/(this.getHackFwall()*25)*this.getHackFwallIntegrity()
+			},
 			patHer(){		
 				// +n floating numbers
 				let getX = Math.floor((event.layerX*Math.random()*0.2)+event.layerX)
@@ -89,6 +108,18 @@
 					}
 				}
 			}
+		},
+		mounted(){
+			EventBus.$on('backDoor', () => {
+				let fwCheck = setInterval(()=>{
+				if(this.getHackFwallIntegrity() == 0){
+					EventBus.$emit('playerDefeated')
+					clearInterval(fwCheck)
+					this.setChatMessage('aaaaaahhhhh how could this happen (⊙△⊙✿) the attacker successfully broke my firewall! quick, reboot the system to shut off their access (((( ;°Д°))))')
+					}
+				}, 10)
+				fwCheck
+			})
 		}
 	};
 </script>
