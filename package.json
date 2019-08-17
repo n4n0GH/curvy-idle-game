@@ -13,7 +13,8 @@
     "vue": "^2.6.10",
     "vue-code-highlight": "^0.7.2",
     "vue-command": "^6.2.3",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",

@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+	plugins: [createPersistedState()],
 	state: {
 		gameStart: false,
 		clickCounter: {
@@ -33,7 +35,7 @@ export default new Vuex.Store({
 		},
 		hackModule: { // @dev: prices are in boxes! chat has to be purchased before!
 			'active': false,
-			'price': 1, // 100 for main release
+			'price': 100, // 100 for main release
 			upgrades: {
 				ram: { // how many commands can be queued up
 					'price': 150, // 150 for main
@@ -315,7 +317,7 @@ export default new Vuex.Store({
 							state.hackModule.game.threads --
 							break;
 						case payload === 'netwatch':
-							state.chatModule.messages.push('take my ultimate attack, you stinky hackerman 凸ಠ益ಠ)凸')
+							state.chatModule.messages.push('take my ultimate attack, agent 232 凸ಠ益ಠ)凸')
 							state.hackModule.game.threads --
 							break;
 					}

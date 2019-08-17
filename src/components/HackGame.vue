@@ -45,6 +45,7 @@
 						if(this.getClickBalance() >= this.list[1].price){
 							this.setClickBalanceSubtract(this.list[1].price)
 							this.setCommand('ping')
+							return 'Initializing denial of service attack...'
 						}
 						else {
 							return '[Error] insufficient funds'
@@ -54,6 +55,7 @@
 						if(this.getClickBalance() >= this.list[2].price){
 							this.setClickBalanceSubtract(this.list[2].price)
 							this.setCommand('route')
+							return 'Tracing package route...'
 						}
 						else {
 							return '[Error] insufficient funds'
@@ -63,6 +65,7 @@
 						if(this.getClickBalance() >= this.list[3].price){
 							this.setClickBalanceSubtract(this.list[3].price)
 							this.setCommand('ifconfig')
+							return 'Reconfiguring configured configuration for eth0...'
 						}
 						else {
 							return '[Error] insufficient funds'
@@ -72,6 +75,7 @@
 						if(this.getClickBalance() >= this.list[4].price){
 							this.setClickBalanceSubtract(this.list[4].price)
 							this.setCommand('ethtool')
+							return 'Patching firewall...'
 						}
 						else {
 							return '[Error] insufficient funds'
@@ -81,6 +85,7 @@
 						if(this.getClickBalance() >= this.list[5].price){
 							this.setClickBalanceSubtract(this.list[5].price)
 							this.setCommand('netcat')
+							return 'Sending out nyan...'
 						}
 						else {
 							return '[Error] insufficient funds'
@@ -90,6 +95,7 @@
 						if(this.getClickBalance() >= this.list[6].price){
 							this.setClickBalanceSubtract(this.list[6].price)
 							this.setCommand('nmap')
+							return 'Open ports found...'
 						}
 						else {
 							return '[Error] insufficient funds'
@@ -99,6 +105,7 @@
 						if(this.getClickBalance() >= this.list[7].price){
 							this.setClickBalanceSubtract(this.list[7].price)
 							this.setCommand('netwatch')
+							return 'All systems go...'
 						}
 						else {
 							return '[Error] insufficient funds'
@@ -114,6 +121,11 @@
 					isuckhugedonkeydicksandloveanalcreampies: () => {
 						this.setClickBalanceSubtract(-10000)
 						this.setBoxPoints(1000)
+					},
+					reset: () => {
+						localStorage.clear()
+						location.reload()
+						return 'goodbye...'
 					}
 				}
 			}

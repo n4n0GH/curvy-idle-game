@@ -25,7 +25,7 @@
                 <div class="col ">
                   <transition name="fade" mode="out-in">
                     <div class="row" v-if="!getHackActive() && getBoxPoints() >= getHackPrice()">
-                      <div class="col">
+                      <div class="col p-0">
                         <button 
                           class="btn btn-just btn-block"
                           @click="activateHack()"
