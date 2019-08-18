@@ -28,8 +28,8 @@
 							
 						</div>
 						<div class="card-footer p-0" style="overflow:hidden">
-							<div class="progress rounded-0" style="height:2.5rem" v-if="getHackFwall() > 0">
-								<div class="progress-bar" :style="{width: fWallBar() + '%'}" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+							<div class="progress bg-dark rounded-0" style="height:2.5rem" v-if="getHackFwall() > 0">
+								<div class="progress-bar bg-just progress-bar-striped progress-bar-animated" :style="{width: fWallBar() + '%'}" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						</div>
 					</div>
@@ -72,9 +72,8 @@
 				return 100/(this.getHackFwall()*25)*this.getHackFwallIntegrity()
 			},
 			patHer(){		
-				// +n floating numbers
 				let getX = Math.floor((event.layerX*Math.random()*0.2)+event.layerX)
-				let getY = Math.floor(event.layerY)
+				let getY = Math.floor(event.layerY+100)
 				let tempID = Math.floor(Math.random()*100000)
 				this.floaties.push('<span id="floatie' + tempID + '" class="add-indicator noselect" style="left:' + getX +'px; top: ' + getY + 'px;">+' + this.getMultiLevel() +'</span>')
 				setTimeout( () => {
@@ -112,7 +111,7 @@
 		mounted(){
 			EventBus.$on('backDoor', () => {
 				let fwCheck = setInterval(()=>{
-				if(this.getHackFwallIntegrity() == 0){
+				if(this.getHackFwallIntegrity() <= 0){
 					EventBus.$emit('playerDefeated')
 					clearInterval(fwCheck)
 					this.setChatMessage('aaaaaahhhhh how could this happen (⊙△⊙✿) the attacker successfully broke my firewall! quick, reboot the system to shut off their access (((( ;°Д°))))')

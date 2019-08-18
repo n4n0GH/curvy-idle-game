@@ -415,7 +415,7 @@ export default new Vuex.Store({
 							break;
 						case payload === 'netwatch':
 							cmdArray = state.hackModule.game.commands[7]
-							state.chatModule.messages.push('take my ultimate attack, agent 232 凸ಠ益ಠ)凸')
+							state.chatModule.messages.push('take my ultimate attack, ' + state.hackModule.game.hacker.skill[state.hackModule.game.hacker.level-1] + ' 凸ಠ益ಠ)凸')
 							state.hackModule.game.hacker.skip ++
 							if (state.hackModule.upgrades.firewall.energy += 20 >= maxFwall){
 								state.hackModule.upgrades.firewall.energy = maxFwall

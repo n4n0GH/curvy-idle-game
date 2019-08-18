@@ -17,6 +17,9 @@ body {
 	background-color: #ff0052;
 	color: white;
 }
+.bg-just {
+	background-color: #ff0052;
+}
 .cps-pointer {
     cursor: pointer;
     animation: curvy-bounce 2s infinite;

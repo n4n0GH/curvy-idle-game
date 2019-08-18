@@ -11,8 +11,8 @@
 						<p class="mb-0">Skill Level: {{skillLevel}}</p>
 					</div>
 					<div class="card-footer p-0" style="overflow:hidden">
-						<div class="progress rounded-0" style="height:2.5rem">
-							<div class="progress-bar" :style="{width: fWallHealth() + '%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+						<div class="progress bg-dark rounded-0" style="height:2.5rem">
+							<div class="progress-bar bg-just progress-bar-striped progress-bar-animated" :style="{width: fWallHealth() + '%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,8 @@
 				'setHackAttack',
 				'setHackerEnergy',
 				'setHackerLevel',
-				'setHackerSkip'
+				'setHackerSkip',
+				'setHackFwallIntegrity'
 			]),
 			
 			fWallHealth(){
@@ -120,6 +121,7 @@
 				hackTimer
 			}),
 			EventBus.$on('playerDefeated', () => {
+				this.setHackFwallIntegrity(0)
 				clearInterval(timer)
 			})
 		}
