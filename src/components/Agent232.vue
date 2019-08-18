@@ -105,6 +105,7 @@
 			}),
 			EventBus.$on('hackerDefeated', () => {
 				clearInterval(timer)
+				this.setHackerSkip(0)
 				this.setHackerStatus()
 				this.setHackerLevel()
 				this.setHackerEnergy()

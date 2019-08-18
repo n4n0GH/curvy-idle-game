@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
@@ -5,7 +6,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-	plugins: [createPersistedState()], // turn off for @dev
+	//plugins: [createPersistedState()], // turn off for @dev
 	state: {
 		gameStart: false,
 		clickCounter: {
@@ -380,7 +381,6 @@ export default new Vuex.Store({
 							break;
 						case payload === 'ethtool':
 							state.chatModule.messages.push('repaired my firewall a little (ﾉ^∇^)ﾉﾟ')
-							// eslint-disable-next-line
 							if (state.hackModule.upgrades.firewall.energy += 10 >= maxFwall){
 								state.hackModule.upgrades.firewall.energy = maxFwall
 							}
@@ -392,7 +392,6 @@ export default new Vuex.Store({
 						case payload === 'netcat':
 							cmdArray = state.hackModule.game.commands[5]
 							state.chatModule.messages.push('repairing or attacking? why not have both? take this Σ(ノ°▽°)ノ')
-							// eslint-disable-next-line
 							if (state.hackModule.upgrades.firewall.energy += 10 >= maxFwall){
 								state.hackModule.upgrades.firewall.energy = maxFwall
 							}
@@ -405,7 +404,6 @@ export default new Vuex.Store({
 						case payload === 'nmap':
 							cmdArray = state.hackModule.game.commands[6]
 							state.chatModule.messages.push('attack train of repairs coming through ⤴︎ ε=ε=(ง ˃̶͈̀ᗨ˂̶͈́)۶ ⤴︎')
-							// eslint-disable-next-line
 							if (state.hackModule.upgrades.firewall.energy += 10 >= maxFwall){
 								state.hackModule.upgrades.firewall.energy = maxFwall
 							}
@@ -419,7 +417,6 @@ export default new Vuex.Store({
 							cmdArray = state.hackModule.game.commands[7]
 							state.chatModule.messages.push('take my ultimate attack, agent 232 凸ಠ益ಠ)凸')
 							state.hackModule.game.hacker.skip ++
-							// eslint-disable-next-line
 							if (state.hackModule.upgrades.firewall.energy += 20 >= maxFwall){
 								state.hackModule.upgrades.firewall.energy = maxFwall
 							}
