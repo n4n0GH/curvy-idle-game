@@ -1,7 +1,8 @@
 <template>
   <div class="container-fluid" style="overflow:hidden">
     <!-- <button @click="cheat()">Cheat</button>
-    <button @click="hurt()">Force Game Over</button> -->
+    <button @click="hurt()">Deplete FW</button>
+    <button @click="reset()">Reset State</button> -->
     <div class="row vh-100 p-4 ">
       <div class="col-9 pr-0">
           <div class="row h-75 ">
@@ -81,6 +82,27 @@
         </transition>
       </div>
     </div>
+
+    <!-- game over overlay -->
+    <transition name="fade" appear>
+      <div 
+        v-if="showGameOver"
+        class="jumbotron jumbotron-fluid bg-overlay noselect"
+        style="position: absolute; left:0; top:0; height:100%; width:100%; z-index:99999;">
+        <div 
+          class="jumbotron jumbotron-fluid bg-warning progress-bar-striped progress-bar-animated p-0" 
+          style="position: absolute; left:0; top:40%; width:100%;">
+          <p class="display-1 text-just text-center attention-anim mt-2">
+            BREACH DETECTED
+          </p>
+          <button 
+            class="btn btn-block btn-just btn-lg rounded-0"
+            @click="reset()">
+            Initiate Reboot Sequence
+          </button>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -98,6 +120,11 @@ import HackGame from './components/HackGame.vue'
 import Agent232 from './components/Agent232.vue'
 
 export default {
+  data(){
+    return {
+      showGameOver: false
+    }
+  },
   methods: {
     ...mapGetters([
       'getGameStart',
@@ -154,6 +181,10 @@ export default {
         }
       }
     },
+    reset(){
+      localStorage.clear()
+      location.reload()
+    },
     cheat(){
       this.setClickBalanceSubtract(-100000)
       this.setBoxPoints(100000)
@@ -170,6 +201,11 @@ export default {
     'hack-upgrade': HackUpgrade,
     'hack-game': HackGame,
     'hacker': Agent232
+  },
+  mounted() {
+    EventBus.$on('playerDefeated', () => {
+        this.showGameOver = true
+      })
   }
 };
 </script>
