@@ -120,9 +120,6 @@
 					},
 					zlatan: () => {
 						return 'guys, any news? I come here every day but still waiting so long with no news. every day losing money. where is Mansto?'
-					},
-					report: () => {
-						console.log('Current HP at ' + this.getHackFwallIntegrity())
 					}
 				}
 			}
