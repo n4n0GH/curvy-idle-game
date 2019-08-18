@@ -7,9 +7,12 @@ Game was made with VueJS.
 
 ## Setup
 ```
+git clone https://github.com/n4n0GH/curvy-idle-game
+cd curvy-idle-game
 npm install
 npm run serve
 ```
+Afterwards use any browser you want and visit localhost:8080
 
 ## TODO
 ### Critical
