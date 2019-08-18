@@ -20,6 +20,9 @@ body {
 .bg-just {
 	background-color: #ff0052;
 }
+.bg-overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+}
 .cps-pointer {
     cursor: pointer;
     animation: curvy-bounce 2s infinite;

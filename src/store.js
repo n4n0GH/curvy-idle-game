@@ -6,7 +6,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-	//plugins: [createPersistedState()], // turn off for @dev
+	plugins: [createPersistedState()], // turn off for @dev
 	state: {
 		gameStart: false,
 		clickCounter: {
