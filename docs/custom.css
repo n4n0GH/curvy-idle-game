@@ -1,0 +1,159 @@
+body {
+	background-color: #121212;
+	font-family: "Roboto Mono", monospace;
+	font-size: 12px;
+	font-weight: 300;
+	color: #fff;
+	letter-spacing: .4px;
+}
+.card {
+	color: #121212;
+}
+.text-just {
+	color: #ff0052;
+	font-family: "IBM Plex Sans", sans-serif;
+}
+.btn-just {
+	background-color: #ff0052;
+	color: white;
+}
+.bg-just {
+	background-color: #ff0052;
+}
+.bg-overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.cps-pointer {
+    cursor: pointer;
+    animation: curvy-bounce 2s infinite;
+}
+.cps-pointer:hover {
+	opacity: 1!important;
+}
+.cps-pointer:active {
+	-webkit-filter:drop-shadow(0px 0px 6px rgba(255,0,140,0.75));
+	filter:drop-shadow(0px 0px 6px rgba(255,0,140,0.75));
+	animation: click-bounce .1s;
+	/* -webkit-box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75);
+	-moz-box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75);
+	box-shadow: 0px 0px 12px 3px rgba(255,0,140,0.75); */
+}
+.autoclicker-active {
+	animation: autoglow 1s ease-in-out infinite, curvy-bounce 2s infinite;
+}
+.attention-anim {
+	animation: pulse 1s ease-in-out infinite;
+}
+.noselect {
+	user-select: none;
+	-webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+}
+/* transition animation */
+.fade-enter {
+	opacity: 0;
+}
+.fade-enter-active {
+	transition: opacity 0.5s;
+	animation: slide-in 0.5s ease-out forwards;
+}
+.fade-leave-active {
+	transition: opacity 0.5s;
+	opacity: 0;
+}
+.fade-out-enter {
+	opacity: 1;
+}
+.fade-out-enter-active {
+	transition: opacity 0.5s;
+}
+.fade-out-leave-active {
+	opacity: 0;
+	transform: translateY(-300px);
+	transition: all 0.7s;
+}
+.indicator {
+	width: 1rem;
+	height: 1rem;
+	background-color: #ff0052;
+	border-radius: 50%;
+}
+.add-indicator {
+	position: absolute;
+	font-size: 3rem;
+	font-weight: bold;
+	color: #ff0052;
+	pointer-events: none;
+}
+@keyframes pulse {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes autoglow {
+	0% {
+
+	}
+	50% {
+		-webkit-filter:drop-shadow(0px 0px 6px rgba(255,0,140,0.75));
+		filter:drop-shadow(0px 0px 6px rgba(255,0,140,0.75));
+	}
+	100% {
+
+	}
+}
+@keyframes slide-in {
+	from {
+	    transform: translateY(40px);
+	}
+	to {
+	    transform: translateY(0);
+	}
+}
+@keyframes click-bounce {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(0.97);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes curvy-bounce {
+	0% {
+		transform: translateY(0);
+	}
+	35% {
+		opacity: 1;
+	}
+	50% {
+		transform: translateY(20px);
+		opacity: 0.85;
+	}
+	65% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+@keyframes curvy-add {
+	0%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100%{
+		opacity: 0;
+		transform: translateY(-300px);
+	}
+}
