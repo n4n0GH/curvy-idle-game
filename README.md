@@ -5,7 +5,11 @@ Game was made with VueJS.
 
 ![Image of Game Over screen](https://raw.githubusercontent.com/n4n0GH/curvy-idle-game/master/github-screen.gif)
 
-## Setup
+Save her from an infinite wave of hackers! [Play it right here on Github!](https://n4n0gh.github.io/curvy-idle-game/)
+
+## Local Setup
+If you want to run this on your own machine and tweak some of the code, here's how to
+
 ```
 git clone https://github.com/n4n0GH/curvy-idle-game
 cd curvy-idle-game
