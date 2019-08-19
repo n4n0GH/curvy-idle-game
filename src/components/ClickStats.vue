@@ -124,13 +124,18 @@
 			}
 		},
 		mounted() {
+			this.$nextTick(function(){
+					if(this.getAutoActive()){
+						EventBus.$emit('autoActivated')
+					}
+			})
 			EventBus.$on('autoActivated', () => {
 				clearInterval(autoSim);
 				autoSim = setInterval(() => {
 					this.setAutoClick(this.getAutoLevel()/100);
 				}, 1000/this.getAutoLevel());
 				autoSim;
-			}),
+			})
 			EventBus.$on('playerDefeated', () => {
 				clearInterval(autoSim)
 			})
