@@ -23,7 +23,7 @@ Afterwards use any browser you want and visit localhost:8080
 - [ ] firewall sometimes doesn't deplete 100%, making it impossible to lose
 - [ ] attacker sometimes doesn't visually spawn, but mechanics do
 - [x] create game over state
-- [ ] if A.P.S. is activated, it won't auto-start on reload with saved states
+- [x] if A.P.S. is activated, it won't auto-start on reload with saved states
 
 ### Non-Critical
 - [x] make proper README.md with todo list and stuff
